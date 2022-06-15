@@ -1,0 +1,26 @@
+{
+  "name": "fastify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avnikaraj/fastify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avnikaraj/fastify/issues"
+  },
+  "homepage": "https://github.com/avnikaraj/fastify#readme",
+  "dependencies": {
+    "fastify": "^4.0.2",
+    "fastify-swagger": "^5.2.0",
+    "nodemon": "^2.0.16",
+    "uuid": "^8.3.2"
+  }
+}
