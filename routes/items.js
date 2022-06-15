@@ -1,4 +1,4 @@
-const {getItems, getItem, addItem, deleteItem, updateItemOpts} = require('../controllers/items')
+const {getItems, getItem, addItem, deleteItem, updateItem} = require('../controllers/items')
 //ITEM SCHEMA
 const Item = {
     type: 'object',
