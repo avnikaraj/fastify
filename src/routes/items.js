@@ -4,8 +4,8 @@ const Item = {
     type: 'object',
             properties: {
               id: { type: 'string' },
-              name: { type: 'string' },
-            },
+              name: { type: 'string' }  
+            }
 }
 
 
@@ -15,11 +15,11 @@ const getItemsOpts = {
       response: {
         200: {
           type: 'array',
-          items: Item,
-        },
-      },
+          items: Item
+        }
+      }
     },
-   handler: getItems,
+   handler: getItems
 }
 
 const getItemOpts = {

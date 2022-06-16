@@ -4,8 +4,8 @@
   "description": "",
   "main": "server",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server"
+    "start": "node ./src/server",
+    "dev": "nodemon ./src/server"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/avnikaraj/fastify#readme",
   "dependencies": {
+    "@fastify/swagger": "^7.3.0",
     "fastify": "^4.0.2",
-    "fastify-swagger": "^5.2.0",
     "nodemon": "^2.0.16",
     "uuid": "^8.3.2"
   }
