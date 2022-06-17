@@ -1,4 +1,4 @@
-const {setupTestEnv} = require('./setupTestEnv');
+const { setupTestEnv } = require('./setupTestEnv');
 
 const app = setupTestEnv();
 
@@ -8,8 +8,6 @@ describe("Integretion tests for CRUD opertaions connected to test postgres Db", 
             name: "test",
             description: "test",
             groos_amount: 20
-          
-
         }
         const response = await app.inject({
             method: 'POST',
@@ -22,4 +20,30 @@ describe("Integretion tests for CRUD opertaions connected to test postgres Db", 
 
     })
 
+    test("Should get a list of todos via GET route", async () => {
+        const response = await app.inject({
+            method: "GET",
+            url: "/v2",
+        });
+
+        expect(response.statusCode).toBe(200);
+
+    });
+
+    test("Should delete a todo", async () => {
+        const response = await app.inject({
+            method: "DELETE",
+            url: "/v2/2",
+        });
+
+        expect(response.statusCode).toBe(200);
+        expect(response).toMatchObject({
+            "body": "{\"message\":\"Todo deleted\"}",
+        });
+    });
+
+
+
 })
+
+

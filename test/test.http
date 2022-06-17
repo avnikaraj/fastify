@@ -1,28 +1,28 @@
 ### Get all todos
-GET http://localhost:5000/v1/todos HTTP/1.1
+GET http://127.0.0.1:8080/v1/todos HTTP/1.1
 
 ### Get single todos
-GET http://localhost:5000/v1/todos/1 HTTP/1.1
+GET http://localhost:8080/v1/todos/1 HTTP/1.1
 
 ### add todo
-POST  http://localhost:5000/v1/todos HTTP/1.1
+POST  http://localhost:8080/v1/todos HTTP/1.1
 Content-Type: application/json
 
 {
     "name": "test 1",
-    "description": "do test 1"
+    "description": "des test 1"
 
 }
 ### delete todo
 
-DELETE  http://localhost:5000/v1/todos/2 HTTP/1.1
+DELETE  http://localhost:8080/v1/todos/2 HTTP/1.1
 
 ### update todo
-PUT  http://localhost:5000/v1/todos/3 HTTP/1.1
+PUT  http://localhost:8080/v1/todos/3 HTTP/1.1
 Content-Type: application/json
 
 {
     "name": "updated test 1",
-    "description": "Update des test 1"
+    "description": "testtttt"
 
 }

@@ -1,12 +1,12 @@
 const { vatCalculator } = require("../../utlis/vatCalculator");
 
-const {postTodoOpts} = require('./index');
+const { postTodoOptions, getTodoOptions,getTodosOptions,deleteTodoOptions,updateTodoOptions } = require('./index');
 
 
 
 const todoRoutes_v2 = async (fastify, options, done) => {
 
-    fastify.get('/', async (request, reply) => {
+    fastify.get('/',getTodosOptions, async (request, reply) => {
 
         try {
             const { rows } = await fastify.pg.query('SELECT * FROM todos');
@@ -16,7 +16,7 @@ const todoRoutes_v2 = async (fastify, options, done) => {
         }
     })
 
-    fastify.get('/:id', async (request, reply) => {
+    fastify.get('/:id', getTodoOptions, async (request, reply) => {
         try {
             const { id } = request.params;
             const { rows } = await fastify.pg.query('SELECT * FROM todos WHERE id = $1', [id]);
@@ -27,12 +27,12 @@ const todoRoutes_v2 = async (fastify, options, done) => {
         }
     })
 
-    fastify.put('/:id', async (request, reply) => {
+    fastify.put('/:id',updateTodoOptions, async (request, reply) => {
 
         try {
             const { id } = request.params;
-            const { name, description,groos_amount } = request.body;
-            const { rows } = await fastify.pg.query('UPDATE todos SET  name=$1,description=$2,groos_amount=$3 WHERE id = $4 RETURNING *', [name, description,groos_amount, id]);
+            const { name, description, groos_amount } = request.body;
+            const { rows } = await fastify.pg.query('UPDATE todos SET  name=$1,description=$2,groos_amount=$3 WHERE id = $4 RETURNING *', [name, description, groos_amount, id]);
             reply.send(rows[0]);
         } catch (error) {
             reply.send(error);
@@ -40,7 +40,7 @@ const todoRoutes_v2 = async (fastify, options, done) => {
         }
     })
 
-    fastify.delete('/:id', async (request, reply) => {
+    fastify.delete('/:id',deleteTodoOptions, async (request, reply) => {
 
         try {
             const { id } = request.params
@@ -51,7 +51,7 @@ const todoRoutes_v2 = async (fastify, options, done) => {
         }
     })
 
-    fastify.post('/', postTodoOpts, async (req, reply) => {
+    fastify.post('/', postTodoOptions, async (req, reply) => {
         try {
             const { name, description, groos_amount } = req.body
             const netAmount = vatCalculator.calculateNetAmount(groos_amount);
@@ -71,3 +71,4 @@ const todoRoutes_v2 = async (fastify, options, done) => {
 }
 
 module.exports = { todoRoutes_v2 };
+

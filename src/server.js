@@ -1,18 +1,20 @@
 const { build } = require('./app')
 
+const env=require('./config/env')
+
 const app = build({ logger: true },
     {
         exposeRoute: true,
         routePrefix: '/docs',
         swagger: { info: { title: "Fastify-API", version: "1.0.0" } }
     }, {
-    connectionString: "postgres://postgres:postgres@localhost:5432/postgres"
+    connectionString: env.POSTGRES_DB_CONNECTION_STRING
 
 });
 
 
 
-app.listen(5000, function (err, address) {
+app.listen(Number(env.WEB_APP_HOST_PORT), '0.0.0.0', function (err, address) {
 
     if (err) {
         app.log.error(err)

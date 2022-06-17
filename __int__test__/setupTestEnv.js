@@ -10,7 +10,7 @@ const insertSql = "INSERT INTO todos (name, description, groos_amount, net_amoun
 
 
     const app = build({logger: true},{},
-        { connectionString:"postgres://postgres:postgres@localhost:5432/postgres_test"});
+        { connectionString:env.POSTGRES_TEMP_DB_CONNECTION_STRING});
 
         beforeAll(async () => {
             await app.ready();
